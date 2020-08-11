@@ -26,13 +26,10 @@ sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal mai
 
 			#Installing#
 			sudo apt update
-			sudo apt-get install sublime-merge spotify-client plata-theme papirus-icon-theme chromium-browser geany geany-plugins gimp vlc \
-			psensor fonts-roboto ttf-mscorefonts-installer deluge uget codeblocks meld gparted playonlinux winehq-stable fortune-mod figlet \
-			htop cmatrix neofetch aria2 curl ncdu python3-pip python3-venv zip unzip
+			sudo apt-get install sublime-merge spotify-client plata-theme papirus-icon-theme chromium-browser geany geany-plugins gimp vlc psensor fonts-roboto ttf-mscorefonts-installer deluge uget codeblocks meld gparted playonlinux winehq-stable fortune-mod figlet htop cmatrix neofetch aria2 curl ncdu python3-pip python3-venv zip unzip gdebi-core
 
 			#BC
 			wget https://www.scootersoftware.com/bcompare-4.3.5.24893_amd64.deb
-			sudo apt-get install gdebi-core
 			sudo gdebi bcompare-4.3.5.24893_amd64.deb
 
 exit
