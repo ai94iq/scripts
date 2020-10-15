@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sudo apt install kde-plasma-desktop sddm
+sudo apt install kde-plasma-desktop

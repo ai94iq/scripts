@@ -2,5 +2,5 @@
 
 sudo add-apt-repository ppa:graphics-drivers && sudo apt-get update
 
-sudo apt-get install nvidia-driver-418-server
+sudo apt-get install nvidia-driver-450-server
 
