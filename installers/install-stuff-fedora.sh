@@ -11,4 +11,8 @@ sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/dev/x86_
 sudo dnf copr enable tonyjames/plata-theme
 
 #install-everything
-sudo dnf install sublime-text papirus-icon-theme vlc google-roboto-fonts.noarch meld gparted telegram-desktop chromium htop neofetch plata-theme numix-icon-theme arc-theme
+sudo dnf install sublime-text papirus-icon-theme vlc google-roboto-fonts.noarch meld gparted telegram-desktop chromium htop neofetch plata-theme numix-icon-theme arc-theme numix-icon-theme-circle gnome-tweaks
+
+#enable-flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo dnf install flatpak
