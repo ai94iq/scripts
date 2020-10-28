@@ -8,7 +8,7 @@ sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
 sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/dev/x86_64/sublime-text.repo
 
 #install-everything
-sudo dnf install sublime-text papirus-icon-theme vlc google-roboto-fonts.noarch meld gparted telegram-desktop chromium htop neofetch numix-icon-theme arc-theme numix-icon-theme-circle gnome-tweaks
+sudo dnf install sublime-text papirus-icon-theme vlc google-roboto-fonts.noarch meld telegram-desktop chromium htop neofetch numix-icon-theme arc-theme numix-icon-theme-circle
 
 #enable-flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
