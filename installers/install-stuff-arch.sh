@@ -5,7 +5,7 @@ curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --
 
 echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
-sudo pacman -Syu ; sudo pacman -Syu sublime-text thermald lm_sensors psensor figlet-mode fortune
+sudo pacman -Syu ; sudo pacman -Syu sublime-text thermald lm_sensors psensor
 
 #install-stuff
-yay -Syu flatpak papirus-icon-theme vlc meld gparted telegram-desktop chromium htop neofetch plata-theme numix-circle-arc-icons-git numix-circle-icon-theme-git numix-cursor-theme-git thermald lm_sensors psensor mate-terminal ttf-opensans rofi
+yay -Syu flatpak papirus-icon-theme vlc meld gparted telegram-desktop chromium htop neofetch plata-theme numix-circle-arc-icons-git numix-circle-icon-theme-git numix-cursor-theme-git thermald lm_sensors psensor mate-terminal ttf-opensans drun intel-ucode-clear libcurl3-gnutls libcurl-openssl-1.0
