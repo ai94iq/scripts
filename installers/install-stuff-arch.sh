@@ -8,4 +8,5 @@ echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable
 sudo pacman -Syu ; sudo pacman -Syu sublime-text thermald lm_sensors psensor ncdu
 
 #install-stuff
-yay -Syu flatpak papirus-icon-theme vlc meld gparted telegram-desktop chromium htop neofetch plata-theme numix-circle-arc-icons-git numix-circle-icon-theme-git numix-cursor-theme-git thermald lm_sensors psensor mate-terminal ttf-opensans drun intel-ucode-clear libcurl3-gnutls libcurl-openssl-1.0 aria2 aria2c-daemon
+yay -Syu flatpak papirus-icon-theme vlc meld gparted telegram-desktop chromium htop neofetch plata-theme thermald lm_sensors psensor mate-terminal ttf-opensans drun intel-ucode-clear libcurl3-gnutls libcurl-openssl-1.0 aria2 aria2c-daemon
+
