@@ -1,9 +1,0 @@
-{
-    "visual": {
-        "progressBar": "accent"
-    },
-    "experimentalFeatures": {
-        "experimentalCmd": true,
-        "experimentalArg": false
-    }
-}
