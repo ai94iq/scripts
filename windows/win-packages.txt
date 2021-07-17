@@ -1,0 +1,26 @@
+#add bigger apps at the end plox
+Blizzard.BattleNet
+ScooterSoftware.BeyondCompare4
+JAMSoftware.TreeSizeFree
+Valve.Steam
+Git.Git
+GIMP.GIMP
+Google.Chrome
+DiskInternalsResearch.DiskInternalsLinuxReader
+Notepad++.Notepad++
+OBSProject.OBSStudio
+Spotify.Spotify
+Python.Python.3
+Telegram.TelegramDesktop.Beta
+c0re100.qBittorrent-Enhanced-Edition
+VideoLAN.VLCNightly
+Microsoft.VisualStudioCode.Insiders
+alcpu.CoreTemp
+mcmilk.7zip-zstd 
+TGRMNSoftware.BulkRenameUtility 
+VideoLAN.VLC
+Microsoft.PowerShell.Preview
+Microsoft.WindowsTerminalPreview
+LibreOffice.LibreOffice-PreReleases
+Google.AndroidStudio.Canary
+
