@@ -7,4 +7,4 @@ sudo pacman -Syu sublime-text
 
 
 #install-stuff
-yay -Syu papirus-icon-theme meld gparted telegram-desktop google-chrome gdu ttf-ms-fonts noto-fonts-emoji appimagelauncher appstream appimage-manager appimage-thumbnailer-git appimage-appimage ocs-url htop neofetch plata-theme thermald lm_sensors psensor mate-terminal ttf-opensans drun intel-ucode-clear gtk-engine-murrine ttf-roboto marco flameshot spotify octopi-dev celluloid youtube-dl
+yay -Syu papirus-icon-theme meld gparted telegram-desktop google-chrome gdu ttf-ms-fonts noto-fonts-emoji appimagelauncher appstream appimage-manager appimage-thumbnailer-git appimage-appimage ocs-url htop neofetch plata-theme thermald lm_sensors psensor ttf-opensans intel-ucode-clear gtk-engine-murrine ttf-roboto flameshot spotify octopi-dev celluloid youtube-dl
