@@ -3,7 +3,6 @@ Blizzard.BattleNet
 ScooterSoftware.BeyondCompare4
 JAMSoftware.TreeSizeFree
 Valve.Steam
-Git.Git
 GIMP.GIMP
 Google.Chrome
 DiskInternalsResearch.DiskInternalsLinuxReader
@@ -19,8 +18,15 @@ alcpu.CoreTemp
 mcmilk.7zip-zstd 
 TGRMNSoftware.BulkRenameUtility 
 VideoLAN.VLC
-Microsoft.PowerShell.Preview
-Microsoft.WindowsTerminalPreview
+ShareX.ShareX
+Notion.Notion
+Giorgiotani.Peazip
+DuongDieuPhap.ImageGlass
+SumatraPDF.
+Daum.PotPlayer
+Meld.Meld
+AppWork.JDownloader
+Microsoft.PowerToys
 LibreOffice.LibreOffice-PreReleases
+Oracle.VirtualBox
 Google.AndroidStudio.Canary
-
