@@ -7,7 +7,7 @@ while ($confirmation -ne "y" -and $confirmation -ne "n") {
             if ($line.contains("#")) {
                 continue
             }
-            winget install --id $line -e        
+            winget install --force --id $line -e        
         }
     }
 }
