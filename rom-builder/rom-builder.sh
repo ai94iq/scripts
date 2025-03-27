@@ -213,7 +213,14 @@ fi
 echo -e "${GREEN}Starting build process...${NC}"
 if [[ "$ROM" == "axion" ]]; then
     if command -v ax &>/dev/null; then
-        ax br $DEVICE
+        # Use correct ax command syntax without -j parameter
+        if [[ "$BUILD_FASTBOOT" == true ]]; then
+            echo -e "${YELLOW}Building with fastboot package${NC}"
+            ax fb  # Use 'fb' mode for fastboot
+        else
+            echo -e "${YELLOW}Building standard package${NC}"
+            ax b   # Use 'b' mode for standard build
+        fi
     else
         brunch $DEVICE
     fi
