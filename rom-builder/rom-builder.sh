@@ -166,30 +166,34 @@ source build/envsetup.sh || {
 echo -e "${GREEN}Setting up device: $DEVICE${NC}"
 if [[ "$ROM" == "axion" ]]; then
     if [[ "$DEVICE" == "pipa" ]]; then
-        # Use axion command if available, otherwise fall back to lunch/breakfast
-        if command -v axion &>/dev/null; then
-            axion pipa || lunch aosp_pipa-userdebug || breakfast pipa
-        else
-            lunch aosp_pipa-userdebug || breakfast pipa
-        fi
-        
         # Set GMS build flag for Axion if needed
         if [[ "$VARIANT" == "gms" ]]; then
-            export WITH_GMS=true
-            echo -e "${GREEN}Building with GMS support${NC}"
+            echo -e "${GREEN}Configuring build for GMS support${NC}"
+            axion "$DEVICE" gms || {
+                echo -e "${RED}Failed to configure Axion with GMS${NC}"
+                exit 1
+            }
         else
-            export WITH_GMS=false
-            echo -e "${GREEN}Building vanilla version (no GMS)${NC}"
+            echo -e "${GREEN}Configuring build for vanilla version (no GMS)${NC}"
+            axion "$DEVICE" va || {
+                echo -e "${RED}Failed to configure vanilla Axion${NC}"
+                exit 1
+            }
         fi
     elif [[ "$DEVICE" == "raven" ]]; then
-        lunch aosp_raven-userdebug || breakfast raven
-        
+        # Set GMS build flag for Axion if needed
         if [[ "$VARIANT" == "gms" ]]; then
-            export WITH_GMS=true
-            echo -e "${GREEN}Building with GMS support${NC}"
+            echo -e "${GREEN}Configuring build for GMS support${NC}"
+            axion "$DEVICE" gms || {
+                echo -e "${RED}Failed to configure Axion with GMS${NC}"
+                exit 1
+            }
         else
-            export WITH_GMS=false
-            echo -e "${GREEN}Building vanilla version (no GMS)${NC}"
+            echo -e "${GREEN}Configuring build for vanilla version (no GMS)${NC}"
+            axion "$DEVICE" va || {
+                echo -e "${RED}Failed to configure vanilla Axion${NC}"
+                exit 1
+            }
         fi
     fi
 elif [[ "$ROM" == "lmodroid" ]]; then
@@ -212,19 +216,16 @@ fi
 # Start the build
 echo -e "${GREEN}Starting build process...${NC}"
 if [[ "$ROM" == "axion" ]]; then
-    if command -v ax &>/dev/null; then
-        # Use correct ax command syntax without -j parameter
-        if [[ "$BUILD_FASTBOOT" == true ]]; then
-            echo -e "${YELLOW}Building with fastboot package${NC}"
-            ax fb  # Use 'fb' mode for fastboot
-        else
-            echo -e "${YELLOW}Building standard package${NC}"
-            ax b   # Use 'b' mode for standard build
-        fi
-    else
-        brunch $DEVICE
+    echo -e "${YELLOW}Building Axion for $DEVICE with variant: $VARIANT${NC}"
+    if [[ "$BUILD_FASTBOOT" == true ]]; then
+        echo -e "${YELLOW}Including fastboot package${NC}"
+        export BUILD_FASTBOOT=true  # Set environment variable for fastboot
     fi
+    
+    # Use brunch command for the actual build
+    brunch "$DEVICE"
 else
+    echo -e "${YELLOW}Building LMODroid for $DEVICE${NC}"
     m lmodroid
 fi
 
