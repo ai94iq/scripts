@@ -5,6 +5,9 @@ mkdir -p ~/tmp
 TEST_DIR=$(mktemp -d -p ~/tmp)
 echo "Created test directory: $TEST_DIR"
 
+# Set up cleanup trap to remove test directory on exit
+trap 'echo "Cleaning up test environment..."; rm -rf "$TEST_DIR"; echo "Done."; exit' EXIT INT TERM
+
 # Mock the Android build environment
 mkdir -p "$TEST_DIR/build"
 touch "$TEST_DIR/build/envsetup.sh"
@@ -94,54 +97,32 @@ export HOME=$TEST_DIR
 export PATH="$TEST_DIR:$PATH"
 export MOCK_TEST=true
 
-# Create a modified version of the script with safety guards
-cat > "$TEST_DIR/rom-builder-test.sh" << 'EOF'
+# Create a wrapper script that will explicitly execute rom-builder.sh with bash
+cat > "$TEST_DIR/wrapper.sh" << 'EOF'
 #!/bin/bash
-# This is a safe testing wrapper for rom-builder.sh
+# This wrapper ensures the script is executed with bash
+# regardless of what interpreter the caller is using
 
-if [[ "$MOCK_TEST" != "true" ]]; then
-    echo "ERROR: This test script should only be run in the mock environment!"
-    exit 1
-fi
-
-# Source the actual script but overwrite dangerous commands
-source rom-builder.sh
-
-# Override dangerous commands
-function rm() {
-    echo "[MOCK] Would remove: $@"
-}
-
-function repo() {
-    echo "[MOCK] repo $@"
-    return 0
-}
-
-function wget() {
-    echo "[MOCK] wget $@"
-    return 0
-}
-
-# Run the script with the provided arguments
-main "$@"
+SCRIPT_PATH="$(dirname "$(readlink -f "$0")")/../rom-builder.sh"
+echo "Executing: bash $SCRIPT_PATH $@"
+# Explicitly call with bash to ensure bash-specific features work
+bash "$SCRIPT_PATH" "$@"
 EOF
-chmod +x "$TEST_DIR/rom-builder-test.sh"
+chmod +x "$TEST_DIR/wrapper.sh"
 
 echo "==== Test Environment Ready ===="
-echo "To test your script with different parameters, run:"
-echo "MOCK_TEST=true $TEST_DIR/rom-builder-test.sh [options]"
+echo "To test your script from any directory, run:"
+echo "bash $TEST_DIR/wrapper.sh [options]"
 echo ""
 echo "Example tests:"
-echo "MOCK_TEST=true $TEST_DIR/rom-builder-test.sh -r axion -d pipa -v vanilla"
-echo "MOCK_TEST=true $TEST_DIR/rom-builder-test.sh -r axion -d pipa -v gms -f"
-echo "MOCK_TEST=true $TEST_DIR/rom-builder-test.sh -r lmodroid -d raven"
+echo "bash $TEST_DIR/wrapper.sh -r axion -d pipa -v vanilla"
+echo "bash $TEST_DIR/wrapper.sh -r axion -d pipa -v gms -f"
+echo "bash $TEST_DIR/wrapper.sh -r lmodroid -d raven -s"
 echo ""
-echo "When done testing, remove the test directory with:"
-echo "rm -rf $TEST_DIR"
+echo "The wrapper script explicitly calls bash for executing rom-builder.sh"
+echo "This prevents the shell compatibility issues with /bin/sh"
 echo "==== Test Environment Ready ===="
 
 # Try a simple test run
 echo "Running a sample test..."
-pushd $(dirname $(readlink -f "$0")) > /dev/null
-MOCK_TEST=true bash -c "bash $TEST_DIR/rom-builder-test.sh -r axion -d pipa -v vanilla -s"
-popd > /dev/null
+bash "$TEST_DIR/wrapper.sh" -r axion -d pipa -v vanilla -s
