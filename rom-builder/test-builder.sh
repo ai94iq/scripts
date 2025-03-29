@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Create a temporary directory for testing
-TEST_DIR=$(mktemp -d)
+# Create a temporary directory for testing in ~/tmp/ instead of /tmp
+mkdir -p ~/tmp
+TEST_DIR=$(mktemp -d -p ~/tmp)
 echo "Created test directory: $TEST_DIR"
 
 # Mock the Android build environment
